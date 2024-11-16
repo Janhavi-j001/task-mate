@@ -7,10 +7,10 @@ const TaskApp = () => {
     return JSON.parse(localStorage.getItem("tasks")) || [];
   });
   const [newTask, setNewTask] = useState("");
-  const [search, setSearch] = useState("");
-  const [priority, setPriority] = useState("Medium");
+  const [dueDate, setDueDate] = useState("");
+  const [category, setCategory] = useState("General");
+  const [darkMode, setDarkMode] = useState(false);
 
-  // Persist tasks in localStorage
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
@@ -20,12 +20,15 @@ const TaskApp = () => {
     const newTaskObj = {
       id: Date.now(),
       title: newTask,
+      dueDate: dueDate,
+      category: category,
       completed: false,
-      priority: priority,
+      subtasks: [],
     };
     setTasks([...tasks, newTaskObj]);
     setNewTask("");
-    setPriority("Medium");
+    setDueDate("");
+    setCategory("General");
   };
 
   const deleteTask = (id) => {
@@ -40,26 +43,39 @@ const TaskApp = () => {
     );
   };
 
-  const filteredTasks = tasks.filter((task) =>
-    task.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const addSubtask = (id, subtaskTitle) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id
+          ? { ...task, subtasks: [...task.subtasks, { title: subtaskTitle, completed: false }] }
+          : task
+      )
+    );
+  };
 
-  const sortTasks = (criteria) => {
-    const sortedTasks = [...tasks].sort((a, b) => {
-      if (criteria === "priority") {
-        const order = ["High", "Medium", "Low"];
-        return order.indexOf(a.priority) - order.indexOf(b.priority);
-      } else if (criteria === "completion") {
-        return a.completed - b.completed;
-      }
-      return 0;
-    });
-    setTasks(sortedTasks);
+  const toggleSubtaskCompletion = (taskId, subtaskIndex) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === taskId
+          ? {
+              ...task,
+              subtasks: task.subtasks.map((subtask, index) =>
+                index === subtaskIndex
+                  ? { ...subtask, completed: !subtask.completed }
+                  : subtask
+              ),
+            }
+          : task
+      )
+    );
   };
 
   return (
-    <div className="container">
+    <div className={darkMode ? "container dark-mode" : "container"}>
       <h1>Task Manager</h1>
+      <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
+        Toggle {darkMode ? "Light" : "Dark"} Mode
+      </button>
 
       <div className="task-form">
         <input
@@ -68,37 +84,28 @@ const TaskApp = () => {
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
         />
-        <select
-          value={priority}
-          onChange={(e) => setPriority(e.target.value)}
-        >
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
+        <input
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+        />
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="General">General</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
         </select>
         <button onClick={addTask}>Add Task</button>
       </div>
 
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="Search tasks..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-
-      <div className="sorting-options">
-        <button onClick={() => sortTasks("priority")}>Sort by Priority</button>
-        <button onClick={() => sortTasks("completion")}>Sort by Completion</button>
-      </div>
-
       <div className="task-list">
-        {filteredTasks.map((task) => (
+        {tasks.map((task) => (
           <TaskItem
             key={task.id}
             task={task}
             toggleCompletion={toggleCompletion}
             deleteTask={deleteTask}
+            addSubtask={addSubtask}
+            toggleSubtaskCompletion={toggleSubtaskCompletion}
           />
         ))}
       </div>
