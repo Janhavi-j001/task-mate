@@ -53,7 +53,7 @@ task-mate/
 - Inspiration from other task management apps.
 - React Documentation for the setup and learning resources.
 
-### Setup and Launch Process
+## Setup and Launch Process
 
 1. **Clone the Repository**  
    Clone this repository to your local machine using:  
@@ -84,7 +84,7 @@ task-mate/
 
 ---
 
-### Assumptions Made During Development
+## Assumptions Made During Development
 
 1. **Local Storage for Persistence**  
    - User tasks and subtasks are stored in the browser's `localStorage` to retain data across sessions.  
