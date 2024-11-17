@@ -1,12 +1,15 @@
 import React from "react";
 
-const Subtask = ({ subtask, toggleSubtaskCompletion }) => {
+const Subtask = ({ subtask, toggleSubtaskCompletion, deleteSubtask }) => {
   return (
     <div className={`subtask ${subtask.completed ? "completed" : ""}`}>
       <p>{subtask.title}</p>
-      <button onClick={toggleSubtaskCompletion}>
-        {subtask.completed ? "Undo" : "Complete"}
-      </button>
+      <div className="subtask-actions">
+        <button onClick={toggleSubtaskCompletion}>
+          {subtask.completed ? "Undo" : "Complete"}
+        </button>
+        <button onClick={deleteSubtask}>Delete</button>
+      </div>
     </div>
   );
 };

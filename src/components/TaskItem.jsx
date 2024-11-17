@@ -6,8 +6,14 @@ const TaskItem = ({ task, toggleCompletion, deleteTask, addSubtask, toggleSubtas
 
   const handleAddSubtask = () => {
     if (!newSubtask.trim()) return;
-    addSubtask(task.id, newSubtask);
+    addSubtask(task.id, newSubtask); // Add only the new subtask title
     setNewSubtask("");
+  };
+
+  const deleteSubtask = (subtaskIndex) => {
+    const updatedSubtasks = task.subtasks.filter((_, index) => index !== subtaskIndex);
+    task.subtasks = updatedSubtasks; // Update the task's subtasks
+    toggleSubtaskCompletion(task.id, -1); // Trigger a re-render by calling a task-related action
   };
 
   return (
@@ -29,6 +35,7 @@ const TaskItem = ({ task, toggleCompletion, deleteTask, addSubtask, toggleSubtas
             key={index}
             subtask={subtask}
             toggleSubtaskCompletion={() => toggleSubtaskCompletion(task.id, index)}
+            deleteSubtask={() => deleteSubtask(index)} // Pass the index for deletion
           />
         ))}
         <input

@@ -64,7 +64,7 @@ button {
 button:hover {
   background-color: #22223b;
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   color: #c9ada7;
 }
 
@@ -100,7 +100,7 @@ button:hover {
   background: #9a8c98;
   color: #f2e9e4;
   text-decoration: line-through;
-  box-shadow: inset 0 0 5px #ff5733; /* Red shadow for completed tasks */
+  box-shadow: inset 0 0 5px #ff5733;
 }
 
 .task-item:hover {
@@ -120,7 +120,7 @@ button:hover {
 }
 
 .task-item .task-remove:hover {
-  color: #ff5733; /* Red color for delete action */
+  color: #ff5733; 
 }
 
 .dark-mode {
@@ -206,7 +206,6 @@ button:hover {
   }
 }
 
-/* Keyframe animations */
 @keyframes fadeIn {
   0% {
     opacity: 0;
