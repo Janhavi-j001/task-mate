@@ -1,22 +1,25 @@
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
-  background-color: #f0f4f8;
-  color: #333;
+  background-color: #f2e9e4; /* Light cream for the background */
+  color: #22223b; /* Deep navy for text */
 }
 
 .container {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
-  background: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background: #c9ada7; /* Soft pinkish-beige for the container */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
   text-align: center;
-  color: #007bff;
+  color: #4a4e69; /* Deep purple for headings */
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .task-form {
@@ -30,22 +33,28 @@ h1 {
 .search-bar {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid #9a8c98; /* Muted lavender-gray for borders */
+  border-radius: 6px;
   font-size: 14px;
+  background: #f2e9e4; /* Light cream for inputs */
+  color: #22223b; /* Deep navy text */
 }
 
 button {
   padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
+  border: 2px solid #c9ada7 ;
+  border-radius: 6px;
+  background-color: #f2e9e4; /* Deep purple for buttons */
+  color: #22223b;
   cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.2s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #22223b; /* Dark navy on hover */
+  transform: scale(1.05); /* Subtle scaling */
+  color: #c9ada7;
 }
 
 .sorting-options {
@@ -57,7 +66,7 @@ button:hover {
 .task-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .task-item {
@@ -65,28 +74,58 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #f8f9fa;
+  border: 1px solid #9a8c98; /* Lavender-gray for task borders */
+  border-radius: 8px;
+  background: #c9ada7; /* Soft pinkish-beige for task items */
+  color: #22223b;
   transition: transform 0.2s, background-color 0.2s;
 }
 
 .task-item.completed {
-  background: #e6ffe6;
+  background: #9a8c98; /* Muted lavender-gray for completed tasks */
+  color: #f2e9e4; /* Light cream text for contrast */
   text-decoration: line-through;
 }
 
 .task-item:hover {
-  transform: translateY(-3px);
-  background-color: #f1f1f1;
-}
-/* Add styles for dark mode, subtasks, and more */
-.container {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transform: translateY(-5px);
+  background-color: #4a4e69; /* Deep purple on hover */
+  color: #f2e9e4; /* Light cream text on hover */
 }
 
+/* Dark mode styles */
 .dark-mode {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #22223b; /* Deep navy for dark mode background */
+  color: #f2e9e4; /* Light cream text */
 }
 
+.dark-mode .container {
+  background-color: #4a4e69; /* Deep purple for dark mode container */
+  color: #f2e9e4;
+}
+
+.dark-mode .task-form input,
+.dark-mode .task-form select,
+.dark-mode .search-bar {
+  background: #22223b; /* Deep navy for inputs */
+  color: #f2e9e4; /* Light cream text */
+  border: 1px solid #9a8c98;
+}
+
+.dark-mode button {
+  background-color: #c9ada7; /* Soft pinkish-beige for buttons */
+}
+
+.dark-mode button:hover {
+  background-color: #9a8c98; /* Muted lavender-gray on hover */
+}
+
+.dark-mode .task-item {
+  background: #4a4e69; /* Deep purple for task items */
+  color: #f2e9e4;
+}
+
+.dark-mode .task-item.completed {
+  background: #9a8c98; /* Lavender-gray for completed tasks */
+  color: #f2e9e4;
+}
