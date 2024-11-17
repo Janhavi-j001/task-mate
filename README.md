@@ -52,3 +52,53 @@ task-mate/
 
 - Inspiration from other task management apps.
 - React Documentation for the setup and learning resources.
+
+### Setup and Launch Process
+
+1. **Clone the Repository**  
+   Clone this repository to your local machine using:  
+   ```bash
+   git clone https://github.com/your-username/taskmate.git
+   cd taskmate
+   ```
+
+2. **Install Dependencies**  
+   Install all the required packages using `npm` or `yarn`:  
+   ```bash
+   npm install
+   ```
+
+3. **Start the Development Server**  
+   Launch the application in development mode:  
+   ```bash
+   npm start
+   ```  
+   This will start the app and make it available at `http://localhost:3000`.
+
+4. **Build for Production**  
+   To create an optimized production build:  
+   ```bash
+   npm run build
+   ```  
+   The output will be available in the `build` folder, ready for deployment.
+
+---
+
+### Assumptions Made During Development
+
+1. **Local Storage for Persistence**  
+   - User tasks and subtasks are stored in the browser's `localStorage` to retain data across sessions.  
+   - Assumes that the user has local storage enabled in their browser.
+
+2. **No Authentication**  
+   - The app does not include user authentication, assuming a single-user environment for task management.
+
+3. **Minimal Input Validation**  
+   - Basic checks are implemented to ensure task and subtask fields are not empty. Additional validation (e.g., due date formats) is not enforced.
+
+4. **Mobile Responsiveness**  
+   - The design assumes standard screen sizes and has been optimized for devices with widths of 480px and above.
+
+5. **Browser Compatibility**  
+   - The app is developed and tested in modern browsers such as Chrome and Firefox. Legacy browser support is not guaranteed.
+
