@@ -74,7 +74,7 @@ const TaskApp = () => {
     <div className={darkMode ? "container dark-mode" : "container"}>
       <h1>Task Manager</h1>
       <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
-        Toggle {darkMode ? "Light" : "Dark"} Mode
+         {darkMode ? "Light" : "Dark"} Mode
       </button>
 
       <div className="task-form">
