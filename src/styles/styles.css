@@ -129,3 +129,50 @@ button:hover {
   background: #9a8c98; /* Lavender-gray for completed tasks */
   color: #f2e9e4;
 }
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .task-form {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .task-form input,
+  .task-form select,
+  .search-bar {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  button {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .sorting-options {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
