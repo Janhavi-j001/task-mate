@@ -58,8 +58,8 @@ task-mate/
 1. **Clone the Repository**  
    Clone this repository to your local machine using:  
    ```bash
-   git clone https://github.com/your-username/taskmate.git
-   cd taskmate
+   git clone https://github.com/janhavi-j001/task-mate.git
+   cd task-mate
    ```
 
 2. **Install Dependencies**  
